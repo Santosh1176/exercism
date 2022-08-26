@@ -2,19 +2,23 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
+type Chessboard map[string]File
+type File []bool
+
 func main() {
-	fmt.Println(Schedule("01/02/2006 15:04:05"))
+	type File []bool
+	cb := (map[string]bool{"A": false, "B": false, "C": true, "D": false, "E": true, "F": false, "G": true})
+	count := 0
+	for _, file := range cb {
 
-}
-
-func Schedule(date string) time.Time {
-	//layout := "2006-01-02 15:04:05"
-	t, err := time.Parse("01/02/2006 15:04:05", date)
-	if err != nil {
-		fmt.Println("error", err)
+		count += len(file)
 	}
-	return t
+	fmt.Println(count)
 }
+
+// // AddItem adds an item to customer bill.
+// func AddItem(bill, units map[string]int, item, unit string) bool {
+
+// }
